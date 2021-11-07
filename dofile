@@ -1,0 +1,3132 @@
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\u84'.dta", clear
+* 
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize  
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features: Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work"
+rename a09 mactwork 
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+**************************
+label variable b24 "p2,place of residence features: drinking water"
+rename b24 dwater
+label variable b25 "p2,place of residence features: electricity"
+rename b25 elect
+label variable b26 "p2,place of residence features: gas"
+rename b26 gas
+label variable b27 "p2,place of residence features: bathroom"  
+rename b27 bath
+label variable b28 "p2,place of residence features: cooler" 
+rename b28 cooler
+label variable b29 "p2,place of residence features: telephone" 
+rename b29 telephone
+label variable b30 "p2,place of residence features: Central heating"
+rename b30 centheat
+label variable b31 "p2,place of residence features: kitchen"
+rename b31 kitchen
+label variable b33 "p2,place of residence features: internet"
+rename b33 internet
+label variable b34 "p2,place of residence features: main type of fuel used for cooking"
+rename b34 fuelcook
+label variable b35 "p2,place of residence features: main type of fuel used for heating"
+rename b35 fuelheat
+***********************
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: number of roooms"
+rename b02 nroom
+label variable b03 "p2,place of residence features: area or size of residnce"
+rename b03 sizeresid
+label variable b04 "p2,place of residence features: main building material of the house 1"
+rename b04 materhouse1
+label variable b05 "p2,place of residence features: main building material of the house 2"
+rename b05 materhouse2
+label variable b06 "p2,place of residence features: personal car"
+rename b06 car
+label variable b07 "p2,place of residence features: motorcycle"
+rename b07 motor
+label variable b08 "p2,place of residence features: bicycle"
+rename b08 bicke
+label variable b09 "p2,place of residence features: sewing machine"
+rename b09 sewm
+label variable b10 "p2,place of residence features: radio"
+rename b10 radio
+label variable b11 "p2,place of residence features: stereo system"
+rename b11 stereo
+label variable b12 "p2,place of residence features: black and white tv"
+rename b12 bwtv
+label variable b13 "p2,place of residence features: colour tv"
+rename b13 ctv
+label variable b14 "p2,place of residence features: freezer"
+rename b14 freez
+label variable b15 "p2,place of residence features: fridge"
+rename b15 fridge
+label variable b16 "p2,place of residence features: cooker"
+rename b16 cooker
+label variable b17 "p2,place of residence features: vacum cleaner"
+rename b17 vacumc
+label variable b18 "p2,place of residence features: washing machine"
+rename b18 washm
+label variable b19 "p2,place of residence features: video"
+rename b19 video
+label variable b20 "p2,place of residence features: computer"
+rename b20 comput
+label variable b21 "p2,place of residence features: mobile telephone"
+rename b21 mobphone
+label variable b22 "p2,place of residence features: fan"
+rename b22 fan
+label variable b23 "p2,place of residence features: portable cooler"
+rename b23 pcooler
+***********
+
+****************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2005
+gen str4 year = string(year2)
+drop year2
+gen U= substr(address1, 1,1)
+gen province = substr(address1, 2,2)
+gen county = substr(address1, 4,2)
+gen SRadif = substr(address1, 6,4)
+svyset province [pweight=weight]
+rename U RU
+order address address1 RU province county SRadif year
+tostring RU-weight,replace
+****************
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+****************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\r84'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize  
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features: Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work"
+rename a09 mactwork 
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+**************************
+label variable b24 "p2,place of residence features: drinking water"
+rename b24 dwater
+label variable b25 "p2,place of residence features: electricity"
+rename b25 elect
+label variable b26 "p2,place of residence features: gas"
+rename b26 gas
+label variable b27 "p2,place of residence features: bathroom"  
+rename b27 bath
+label variable b28 "p2,place of residence features: cooler" 
+rename b28 cooler
+label variable b29 "p2,place of residence features: telephone" 
+rename b29 telephone
+label variable b30 "p2,place of residence features: Central heating"
+rename b30 centheat
+label variable b31 "p2,place of residence features: kitchen"
+rename b31 kitchen
+label variable b33 "p2,place of residence features: internet"
+rename b33 internet
+label variable b34 "p2,place of residence features: main type of fuel used for cooking"
+rename b34 fuelcook
+label variable b35 "p2,place of residence features: main type of fuel used for heating"
+rename b35 fuelheat
+***********************
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: number of roooms"
+rename b02 nroom
+label variable b03 "p2,place of residence features: area or size of residnce"
+rename b03 sizeresid
+label variable b04 "p2,place of residence features: main building material of the house 1"
+rename b04 materhouse1
+label variable b05 "p2,place of residence features: main building material of the house 2"
+rename b05 materhouse2
+label variable b06 "p2,place of residence features: personal car"
+rename b06 car
+label variable b07 "p2,place of residence features: motorcycle"
+rename b07 motor
+label variable b08 "p2,place of residence features: bicycle"
+rename b08 bicke
+label variable b09 "p2,place of residence features: sewing machine"
+rename b09 sewm
+label variable b10 "p2,place of residence features: radio"
+rename b10 radio
+label variable b11 "p2,place of residence features: stereo system"
+rename b11 stereo
+label variable b12 "p2,place of residence features: black and white tv"
+rename b12 bwtv
+label variable b13 "p2,place of residence features: colour tv"
+rename b13 ctv
+label variable b14 "p2,place of residence features: freezer"
+rename b14 freez
+label variable b15 "p2,place of residence features: fridge"
+rename b15 fridge
+label variable b16 "p2,place of residence features: cooker"
+rename b16 cooker
+label variable b17 "p2,place of residence features: vacum cleaner"
+rename b17 vacumc
+label variable b18 "p2,place of residence features: washing machine"
+rename b18 washm
+label variable b19 "p2,place of residence features: video"
+rename b19 video
+label variable b20 "p2,place of residence features: computer"
+rename b20 comput
+label variable b21 "p2,place of residence features: mobile telephone"
+rename b21 mobphone
+label variable b22 "p2,place of residence features: fan"
+rename b22 fan
+label variable b23 "p2,place of residence features: portable cooler"
+rename b23 pcooler
+***********
+*****************************
+gen year2=2005
+gen str4 year = string(year2)
+drop year2
+gen RU= substr(address, 1,1)
+gen province = substr(address, 2,2)
+gen county = substr(address, 4,2)
+gen SRadif = substr(address, 6,4)
+gen address1=address
+destring address, replace
+order address address1 RU province county SRadif year
+svyset province  [pweight=weight]
+***********
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU-weight, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+***************************************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\u85'.dta", clear
+* 
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize  
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features: Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work"
+rename a09 mactwork 
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+**************
+label variable b24 "p2,place of residence features: drinking water"
+rename b24 dwater
+label variable b25 "p2,place of residence features: electricity"
+rename b25 elect
+label variable b26 "p2,place of residence features: gas"
+rename b26 gas
+label variable b27 "p2,place of residence features: bathroom"  
+rename b27 bath
+label variable b28 "p2,place of residence features: cooler" 
+rename b28 cooler
+label variable b29 "p2,place of residence features: telephone" 
+rename b29 telephone
+label variable b30 "p2,place of residence features: Central heating"
+rename b30 centheat
+label variable b31 "p2,place of residence features: kitchen"
+rename b31 kitchen
+label variable b33 "p2,place of residence features: internet"
+rename b33 internet
+label variable b34 "p2,place of residence features: main type of fuel used for cooking"
+rename b34 fuelcook
+label variable b35 "p2,place of residence features: main type of fuel used for heating"
+rename b35 fuelheat
+label variable b36 "p2,place of residence features: portable gas based cooler"
+rename b36 pgcooler
+label variable b37 "p2,place of residence features: dishwashing"
+rename b37 dishwash
+label variable b38 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b38 package
+label variable b39 "p2,place of residence features: stationary gas based cooler"
+rename b39 sgcooler
+************
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: number of roooms"
+rename b02 nroom
+label variable b03 "p2,place of residence features: area or size of residnce"
+rename b03 sizeresid
+label variable b04 "p2,place of residence features: main building material of the house 1"
+rename b04 materhouse1
+label variable b05 "p2,place of residence features: main building material of the house 2"
+rename b05 materhouse2
+label variable b06 "p2,place of residence features: personal car"
+rename b06 car
+label variable b07 "p2,place of residence features: motorcycle"
+rename b07 motor
+label variable b08 "p2,place of residence features: bicycle"
+rename b08 bicke
+label variable b09 "p2,place of residence features: sewing machine"
+rename b09 sewm
+label variable b10 "p2,place of residence features: radio"
+rename b10 radio
+label variable b11 "p2,place of residence features: stereo system"
+rename b11 stereo
+label variable b12 "p2,place of residence features: black and white tv"
+rename b12 bwtv
+label variable b13 "p2,place of residence features: colour tv"
+rename b13 ctv
+label variable b14 "p2,place of residence features: freezer"
+rename b14 freez
+label variable b15 "p2,place of residence features: fridge"
+rename b15 fridge
+label variable b16 "p2,place of residence features: cooker"
+rename b16 cooker
+label variable b17 "p2,place of residence features: vacum cleaner"
+rename b17 vacumc
+label variable b18 "p2,place of residence features: washing machine"
+rename b18 washm
+label variable b19 "p2,place of residence features: video"
+rename b19 video
+label variable b20 "p2,place of residence features: computer"
+rename b20 comput
+label variable b21 "p2,place of residence features: mobile telephone"
+rename b21 mobphone
+label variable b22 "p2,place of residence features: fan"
+rename b22 fan
+label variable b23 "p2,place of residence features: portable cooler"
+rename b23 pcooler
+***********
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+****************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2006
+gen str4 year = string(year2)
+drop year2
+gen U= substr(address1, 1,1)
+gen province = substr(address1, 2,2)
+gen county = substr(address1, 4,2)
+gen SRadif = substr(address1, 6,4)
+rename U RU
+svyset province [pweight=weight]
+order address address1 RU province county SRadif year
+****************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU-b32, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+**********************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\r85'.dta", clear
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize  
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features: Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work"
+rename a09 mactwork 
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+**************
+label variable b24 "p2,place of residence features: drinking water"
+rename b24 dwater
+label variable b25 "p2,place of residence features: electricity"
+rename b25 elect
+label variable b26 "p2,place of residence features: gas"
+rename b26 gas
+label variable b27 "p2,place of residence features: bathroom"  
+rename b27 bath
+label variable b28 "p2,place of residence features: cooler" 
+rename b28 cooler
+label variable b29 "p2,place of residence features: telephone" 
+rename b29 telephone
+label variable b30 "p2,place of residence features: Central heating"
+rename b30 centheat
+label variable b31 "p2,place of residence features: kitchen"
+rename b31 kitchen
+label variable b33 "p2,place of residence features: internet"
+rename b33 internet
+label variable b34 "p2,place of residence features: main type of fuel used for cooking"
+rename b34 fuelcook
+label variable b35 "p2,place of residence features: main type of fuel used for heating"
+rename b35 fuelheat
+label variable b36 "p2,place of residence features: portable gas based cooler"
+rename b36 pgcooler
+label variable b37 "p2,place of residence features: dishwashing"
+rename b37 dishwash
+label variable b38 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b38 package
+label variable b39 "p2,place of residence features: stationary gas based cooler"
+rename b39 sgcooler
+************
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: number of roooms"
+rename b02 nroom
+label variable b03 "p2,place of residence features: area or size of residnce"
+rename b03 sizeresid
+label variable b04 "p2,place of residence features: main building material of the house 1"
+rename b04 materhouse1
+label variable b05 "p2,place of residence features: main building material of the house 2"
+rename b05 materhouse2
+label variable b06 "p2,place of residence features: personal car"
+rename b06 car
+label variable b07 "p2,place of residence features: motorcycle"
+rename b07 motor
+label variable b08 "p2,place of residence features: bicycle"
+rename b08 bicke
+label variable b09 "p2,place of residence features: sewing machine"
+rename b09 sewm
+label variable b10 "p2,place of residence features: radio"
+rename b10 radio
+label variable b11 "p2,place of residence features: stereo system"
+rename b11 stereo
+label variable b12 "p2,place of residence features: black and white tv"
+rename b12 bwtv
+label variable b13 "p2,place of residence features: colour tv"
+rename b13 ctv
+label variable b14 "p2,place of residence features: freezer"
+rename b14 freez
+label variable b15 "p2,place of residence features: fridge"
+rename b15 fridge
+label variable b16 "p2,place of residence features: cooker"
+rename b16 cooker
+label variable b17 "p2,place of residence features: vacum cleaner"
+rename b17 vacumc
+label variable b18 "p2,place of residence features: washing machine"
+rename b18 washm
+label variable b19 "p2,place of residence features: video"
+rename b19 video
+label variable b20 "p2,place of residence features: computer"
+rename b20 comput
+label variable b21 "p2,place of residence features: mobile telephone"
+rename b21 mobphone
+label variable b22 "p2,place of residence features: fan"
+rename b22 fan
+label variable b23 "p2,place of residence features: portable cooler"
+rename b23 pcooler
+***********
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+****************************
+gen year2=2006
+gen str4 year = string(year2)
+drop year2
+gen RU= substr(address, 1,1)
+gen province = substr(address, 2,2)
+gen county = substr(address, 4,2)
+gen SRadif = substr(address, 6,4)
+gen address1=address
+destring address,replace
+order address address1 RU province county SRadif year
+tostring RU-b32, replace
+svyset province  [pweight=weight]
+****************
+save C:\Users\Hadi\Desktop\buffer , replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+*********************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\u86'.dta", clear
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize 
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+**************
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+****************
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+***********
+
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+****************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2007
+gen str4 year = string(year2)
+drop year2
+gen U= substr(address1, 1,1)
+gen province = substr(address1, 2,2)
+gen county = substr(address1, 4,2)
+gen SRadif = substr(address1, 6,4)
+svyset province [pweight=weight]
+rename U RU
+order address address1 RU province county SRadif year
+*****************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU-nmactwork, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+******************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\r86'.dta", clear
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize 
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+**************
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+****************
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+***********
+
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+****************************
+gen year2=2007
+gen str4 year = string(year2)
+drop year2
+gen RU= substr(address, 1,1)
+gen province = substr(address, 2,2)
+gen county = substr(address, 4,2)
+gen SRadif = substr(address, 6,4)
+gen address1=address
+destring address, replace
+order address address1 RU province county SRadif year
+svyset province  [pweight=weight]
+*****************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU-nmactwork, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+***************************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\u87'.dta", clear
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize  
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+***********
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+*******
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2008
+gen str4 year = string(year2)
+drop year2
+generate RU=ru
+rename ostan province
+rename shr county
+gen shvahed=substr(address1, 4,4)
+*rename u ru
+order address address1 RU province county shvahed year
+***********************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU-c10new, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+******************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\r87'.dta", clear
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize  
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+***********
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+*******
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2008
+gen str4 year = string(year2)
+drop year2
+drop ru
+gen RU1= substr(address1, 1,1)
+generate RU="0" if RU1=="2"
+rename ostan province
+rename shr county
+drop address
+generate address=address1
+destring address,replace
+gen shvahed= substr(address1, 4,4)
+order address address1 RU1 RU province county shvahed year
+***********************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU1-c10new, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+********************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\u88'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize 
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 deul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+***********
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2009
+gen str4 year = string(year2)
+drop year2
+gen U= substr(address1, 1,1)
+gen province= substr(address1, 2,2)
+rename shr county
+gen shvahed=substr(address1, 4,4)
+rename U RU
+generate RU1=RU
+order address address1 RU1 RU province county shvahed year
+********************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU1-c14new, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+*********************************************************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\r88'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize 
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 deul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+***********
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+***********************************************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2009
+gen str4 year = string(year2)
+drop year2
+gen RU1= substr(address1, 1,1)
+gen province= substr(address1, 2,2)
+generate RU="0" if RU1=="2"
+rename shr county
+drop address
+generate address=address1
+destring address, replace
+gen shvahed= substr(address1, 4,4)
+destring address, replace
+order address address1 RU1 RU province county shvahed year
+**************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU1-c14new, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+**************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\u89'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize 
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 deul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+***********
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+*****************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2010
+gen str4 year = string(year2)
+drop year2
+rename address0 address34
+rename adr85_19 address19
+gen province= substr(address34, 1,2)
+gen county= substr(address34, 3,2)
+move province address19
+move county address19
+gen U= substr(address1, 1,1)
+gen shvahed=substr(address1, 4,4)
+renam U RU
+order address address1 RU shvahed year
+*******************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU-c13new, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+************************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\r89'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize 
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 deul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+***********
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+*****************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2010
+gen str4 year = string(year2)
+drop year2
+rename address0 address34
+rename adr85_19 address19
+gen province= substr(address34, 1,2)
+gen county= substr(address34, 3,2)
+move province address19
+move county address19
+gen RU1= substr(address1, 1,1)
+generate RU="0" if RU1=="2"
+drop address
+generate address=address1
+gen shvahed= substr(address1, 4,4)
+destring address, replace
+order address address1 RU1 RU shvahed year
+*******************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU1-c13new, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+***********************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\u90'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+label variable a08new "p1,HH demographic features: occupation(publication)"
+rename a08new noccup
+**
+tostring address, generate(address1) format(%11.0f)
+gen year2=2011
+gen str4 year = string(year2)
+drop year2
+rename adr85_19 address19
+gen province= substr(address34, 1,2)
+gen county= substr(address34, 3,2)
+move province address19
+move county address19
+gen U= substr(address1, 1,1)
+gen shvahed=substr(address1, 4,4)
+rename U RU
+order address address1 RU shvahed year 
+**********************************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU-c13new, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+************************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\r90'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+label variable a08new "p1,HH demographic features: occupation(publication)"
+rename a08new noccup
+**
+tostring address, generate(address1) format(%11.0f)
+gen year2=2011
+gen str4 year = string(year2)
+drop year2
+rename adaress19 address19
+gen province= substr(address34, 1,2)
+gen county= substr(address34, 3,2)
+move province address19
+move county address19
+gen RU1= substr(address1, 1,1)
+generate RU="0" if RU1=="2"
+drop address
+generate address=address1
+gen shvahed= substr(address1, 4,4)
+destring address, replace
+order address address1 RU1 RU shvahed year 
+**********************************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU1-c13new, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+*****************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\u91'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize 
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b45 "p2,place of residence features: Microwave"
+rename b45 microwave
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 srereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+label variable a08new "p1,HH demographic features: occupation(publication)"
+rename a08new noccup
+****************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2012
+gen str4 year = string(year2)
+drop year2
+rename adr85_19 address19
+gen province= substr(address34, 1,2)
+gen county= substr(address34, 3,2)
+move province address19
+move county address19
+gen U= substr(address1, 1,1)
+gen shvahed=substr(address1, 4,4)
+rename U RU
+order address address1 RU shvahed year
+***********************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU-c14, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+************************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\r91'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize 
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b45 "p2,place of residence features: Microwave"
+rename b45 microwave
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 srereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+label variable a08new "p1,HH demographic features: occupation(publication)"
+rename a08new noccup
+****************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2012
+gen str4 year = string(year2)
+drop year2
+rename adr85_19 address19
+gen province= substr(address34, 1,2)
+gen county= substr(address34, 3,2)
+move province address19
+move county address19
+gen RU1= substr(address1, 1,1)
+generate RU="0" if RU1=="2"
+drop address
+generate address=address1
+gen shvahed= substr(address1, 4,4)
+destring address, replace
+order address address1 RU1 RU shvahed year
+***********************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU1-c14, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+*****************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\u92'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize 
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b45 "p2,place of residence features: Microwave"
+rename b45 microwave
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge 
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 computer
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+label variable a08new "p1,HH demographic features: occupation(publication)"
+rename a08new noccup
+*****
+tostring address, generate(address1) format(%11.0f)
+gen year2=2013
+gen str4 year = string(year2)
+drop year2
+gen U= substr(address1,1,1)
+gen province = substr(address1, 2,2)
+gen county = substr(address1, 4,2)
+gen SRadif = substr(address1, 10,2)
+gen shvahed=substr(address1, 6,4)
+rename U RU
+order address address1 RU province county shvahed SRadif year
+*********
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU-k13, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+**********************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\r92'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize 
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b45 "p2,place of residence features: Microwave"
+rename b45 microwave
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge 
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 computer
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+label variable a08new "p1,HH demographic features: occupation(publication)"
+rename a08new noccup
+*****
+tostring address, generate(address1) format(%11.0f)
+gen year2=2013
+gen str4 year = string(year2)
+drop year2
+gen RU1= substr(address1,1,1)
+gen province = substr(address1, 2,2)
+gen county = substr(address1, 4,2)
+gen shvahed = substr(address1, 6,4)
+gen SRadif = substr(address1, 10,2)
+generate RU="0" if RU1=="2"
+drop address
+generate address=address1
+destring address, replace
+order address address1 RU1 RU province county shvahed SRadif year
+*********
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU1-k13, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+**************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\u93'.dta", clear
+* 
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize  
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features: Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work"
+rename a09 mactwork 
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+**************
+label variable b24 "p2,place of residence features: drinking water"
+rename b24 dwater
+label variable b25 "p2,place of residence features: electricity"
+rename b25 elect
+label variable b26 "p2,place of residence features: gas"
+rename b26 gas
+label variable b27 "p2,place of residence features: bathroom"  
+rename b27 bath
+label variable b28 "p2,place of residence features: cooler" 
+rename b28 cooler
+label variable b29 "p2,place of residence features: telephone" 
+rename b29 telephone
+label variable b30 "p2,place of residence features: Central heating"
+rename b30 centheat
+label variable b31 "p2,place of residence features: kitchen"
+rename b31 kitchen
+label variable b33 "p2,place of residence features: internet"
+rename b33 internet
+label variable b34 "p2,place of residence features: main type of fuel used for cooking"
+rename b34 fuelcook
+label variable b35 "p2,place of residence features: main type of fuel used for heating"
+rename b35 fuelheat
+label variable b36 "p2,place of residence features: portable gas based cooler"
+rename b36 pgcooler
+label variable b37 "p2,place of residence features: dishwashing"
+rename b37 dishwash
+label variable b38 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b38 package
+label variable b39 "p2,place of residence features: stationary gas based cooler"
+rename b39 sgcooler
+************
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: number of roooms"
+rename b02 nroom
+label variable b03 "p2,place of residence features: area or size of residnce"
+rename b03 sizeresid
+label variable b04 "p2,place of residence features: main building material of the house 1"
+rename b04 materhouse1
+label variable b05 "p2,place of residence features: main building material of the house 2"
+rename b05 materhouse2
+label variable b06 "p2,place of residence features: personal car"
+rename b06 car
+label variable b07 "p2,place of residence features: motorcycle"
+rename b07 motor
+label variable b08 "p2,place of residence features: bicycle"
+rename b08 bicke
+label variable b09 "p2,place of residence features: sewing machine"
+rename b09 sewm
+label variable b10 "p2,place of residence features: radio"
+rename b10 radio
+label variable b11 "p2,place of residence features: stereo system"
+rename b11 stereo
+label variable b12 "p2,place of residence features: black and white tv"
+rename b12 bwtv
+label variable b13 "p2,place of residence features: colour tv"
+rename b13 ctv
+label variable b14 "p2,place of residence features: freezer"
+rename b14 freez
+label variable b15 "p2,place of residence features: fridge"
+rename b15 fridge
+label variable b16 "p2,place of residence features: cooker"
+rename b16 cooker
+label variable b17 "p2,place of residence features: vacum cleaner"
+rename b17 vacumc
+label variable b18 "p2,place of residence features: washing machine"
+rename b18 washm
+label variable b19 "p2,place of residence features: video"
+rename b19 video
+label variable b20 "p2,place of residence features: computer"
+rename b20 comput
+label variable b21 "p2,place of residence features: mobile telephone"
+rename b21 mobphone
+label variable b22 "p2,place of residence features: fan"
+rename b22 fan
+label variable b23 "p2,place of residence features: portable cooler"
+rename b23 pcooler
+***********
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+****************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2014
+gen str4 year = string(year2)
+drop year2
+gen U= substr(address1, 1,1)
+gen province = substr(address1, 2,2)
+gen county = substr(address1, 4,2)
+gen SRadif = substr(address1, 10,2)
+gen shvahed=substr(address1, 6,4)
+rename U RU
+order address address1 RU province county SRadif year
+****************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU-c14new, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+**********************
+clear
+use "C:\Users\Hadi\Desktop\stata13.data\r93'.dta", clear
+*
+label variable c01 "p3,H' demographic features : size of household"
+rename c01 hsize
+label variable c02 "p3,H' demographic features: number of litrate"
+rename c02 nlitrate
+label variable a02 "p1,HH' demographic features: age head of household"
+rename a02 hhage
+label variable a03 "p1,HH demographic features: Literacy" 
+rename a03 literacy
+label variable a04 "p1,HH demographic features: education level"
+rename a04 edul
+label variable a05 "p1,HH demographic features: degree of education"
+rename a05 dedu
+label variable a06 "p1,HH demographic features: Occupation status" 
+rename a06 occupsta
+label variable a07 "p1,HH demographic features:Marital status" 
+rename a07 maritalsta
+label variable c03 "p3,H' demographic features : number of students"
+rename c03 nstudent
+label variable c04 "p3,H' demographic features : Number of employees"
+rename c04 nemployee
+label variable a01 "p1,HH' demographic features: sex head of household"
+rename a01 hhsex
+label variable a08 "p1,HH' demographic features: Occupation"
+rename a08 occup
+label variable a09 "p1,HH' demographic features: main activity at work" 
+rename a09 mactwork
+label variable a10 "p1,HH' demographic features: Employment condition"
+rename a10 employeecon
+label variable c05 "p3,H' demographic features : number of income"
+rename c05 nincome
+label variable b24 "p2,place of residence features: none of the above"
+rename b24 none
+label variable b25 "p2,place of residence features: drinking water"
+rename b25 dwater
+label variable b26 "p2,place of residence features: electricity"
+rename b26 elect
+label variable b27 "p2,place of residence features: internet"  
+rename b27 internet
+label variable b28 "p2,place of residence features: kitchen" 
+rename b28 kitchen
+label variable b29 "p2,place of residence features: gas" 
+rename b29 gas
+label variable b30 "p2,place of residence features: Central cooling"
+rename b30 centcool
+label variable b31 "p2,place of residence features: bathroom"
+rename b31 bath
+label variable b32 "p2,place of residence features: stationary water based cooler"
+rename b32 swcooler
+label variable b33 "p2,place of residence features: telephone"
+rename b33 telephone
+label variable b34 "p2,place of residence features: urban sewage system"
+rename b34 usewage
+label variable b35 "p2,place of residence features: main type of fuel used for cooking"
+rename b35 fuelcook
+label variable b36 "p2,place of residence features: portable water based cooler"
+rename b36 pwcooler
+label variable b37 "p2,place of residence features: portable gas based cooler"
+rename b37 pgcooler
+label variable b38 "p2,place of residence features: central heating"
+rename b38 centheat
+label variable b39 "p2,place of residence features: central cooler,heater,and air conditioner"
+rename b39 package
+label variable b40 "p2,place of residence features: stationary gas based cooler"
+rename b40 sgcooler
+label variable b41 "p2,place of residence features: main type of fuel used for heating"
+rename b41 fuelheat
+label variable b42 "p2,place of residence features: mobile phone"
+rename b42 mobphone
+label variable b43 "p2,place of residence features: dishwasher"
+rename b43 dishwash
+label variable b45 "p2,place of residence features: Microwave"
+rename b45 microwave
+label variable b44 "p2,place of residence features: main household consumption fuel(for warm water)"
+rename b44 fuelwarmw
+label variable b01 "p2,place of residence features: How to seize residence"
+rename b01 seizeresid
+label variable b02 "p2,place of residence features: other How to seize residence"
+rename b02 othseize
+label variable b03 "p2,place of residence features: number of roooms"
+rename b03 nroom
+label variable b04 "p2,place of residence features: area or size of residnce"
+rename b04 sizeresid
+label variable b05 "p2,place of residence features: main building material of the house 1"
+rename b05 materhouse1
+label variable b06 "p2,place of residence features: main building material of the house 2"
+rename b06 materhouse2
+label variable b07 "p2,place of residence features: personal car"
+rename b07 car
+label variable b08 "p2,place of residence features: motorcycle"
+rename b08 motor
+label variable b09 "p2,place of residence features: washing machine"
+rename b09 washm
+label variable b10 "p2,place of residence features: bicycle"
+rename b10 bicke
+label variable b11 "p2,place of residence features: radio"
+rename b11 radio
+label variable b12 "p2,place of residence features: stereo system"
+rename b12 stereo
+label variable b13 "p2,place of residence features: black and white tv"
+rename b13 bwtv
+label variable b14 "p2,place of residence features: fridge"
+rename b14 fridge
+label variable b15 "p2,place of residence features: freezer"
+rename b15 freez
+label variable b16 "p2,place of residence features: fridge freezer"
+rename b16 fridgefreez
+label variable b17 "p2,place of residence features: cooker"
+rename b17 cooker
+label variable b18 "p2,place of residence features: vacum cleaner"
+rename b18 vacumc
+label variable b19 "p2,place of residence features: colour tv"
+rename b19 ctv
+label variable b20 "p2,place of residence features: video,vcd,dvd"
+rename b20 dvd
+label variable b21 "p2,place of residence features: computer"
+rename b21 comput
+label variable b22 "p2,place of residence features: sewing machine"
+rename b22 sewm
+label variable b23 "p2,place of residence features: fan"
+rename b23 fan
+label variable c01new "p3,H' demographic features : new size of household"
+rename c01new nhsize
+label variable c02new "p3,H' demographic features : new number of litrate" 
+rename c02new nnlitrate
+label variable c04new "p3,H' demographic features : new number of employees" 
+rename c04new nnemployee
+label variable a10new "p1,HH demographic features: employment condition(publication)"
+rename a10new nemployeecon
+label variable a05new "p1,HH demographic features: degree of education(publication)"
+rename a05new ndedu
+label variable a09new "p1,HH demographic features: main activity at work(publication)"
+rename a09new nmactwork
+label variable a08new "p1,HH demographic features: occupation(publication)"
+rename a08new noccup
+************************
+tostring address, generate(address1) format(%11.0f)
+gen year2=2014
+gen str4 year = string(year2)
+drop year2
+gen RU1 = substr(address1,1,1)
+gen province = substr(address1, 2,2)
+gen county = substr(address1, 4,2)
+gen shvahed = substr(address1, 6,4)
+gen SRadif = substr(address1, 10,2) 
+generate RU="0" if RU1=="2"
+drop address
+generate address=address1
+destring address, replace
+order address address1 RU1 RU province county shvahed SRadif year
+***********************
+save C:\Users\Hadi\Desktop\buffer , replace
+tostring RU1-c14new, replace
+append using C:\Users\Hadi\Desktop\dataset84-93.data
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+save C:\Users\Hadi\Desktop\dataset84-93.data,replace
+**************
+clear
+use "C:\Users\Hadi\Desktop\data.84-93.dta", clear
+destring RU, replace
+generate cpi=48.56167
+replace cpi=54.35972 if  year=="2006"
+replace cpi=63.71668 if year=="2007"
+replace cpi=79.99619 if year=="2008"
+replace cpi=90.79589 if year=="2009"
+replace cpi=100 if year=="2010"
+replace cpi=120.6283 if year=="2011"
+replace cpi=153.6291 if year=="2012"
+replace cpi=213.9536 if year=="2013"
+replace cpi=250.8293 if year=="2014"
+generate lcpi=log(cpi)
+replace hhsex="0" if hhsex=="2"
+replace literacy="0" if literacy=="2"
+destring vkhorak vgheirehkhorak, replace
+destring ghazineh, replace
+generate b=vkhorak+ vgheirehkhorak
+generate w=vkhorak/ghazineh
+generate c=log(ghazineh)
+destring hsize, replace
+destring hhage, replace
+destring hhsex, replace
+destring maritalsta, replace
+destring literacy, replace
+keep address w c year hsize RU lcpi cpi daramad hhage maritalsta shvahed hhsex literacy nhazineh ghazineh vkhorak vgheirehkhorak nhsize weight address1 province county
+*drop if province !="28"
+replace county ="04" if county == "09"
+replace county ="05" if county == "13"
+replace county ="03" if county == "24"
+replace county ="06" if county == "25"
+drop if year !="2005"
+*drop if province !="09"
+*drop if county !="07"
+replace year="2007" if year=="2008"
+drop if year !="2013"
+*keep if year =("2005" ,"2006")
+sort year
+svyset [pweight=weight]
+svy: regress w c if hsize==4 & RU==1
+gen B=_b[_cons] + _b[c]*c
+svy: regress w c if RU==1
+gen E= _b[_cons] + _b[c]*c
+svy: regress w c if hsize==2 & RU==1
+gen F= _b[_cons] + _b[c]*c
+svy: regress w c hsize RU hhsex literacy lcpi
+gen A= _b(_cons)+ _b(c)
+svy: regress w c hsize RU hhsex literacy if year=="2005"
+*svy: regress w c hsize RU lcpi
+*svy: regress w c hsize hhsex lcpi
+destring year, replace
+svy: regress w c lcpi if [hsize==1 & RU==1]
+gen w1= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+twoway (qfit w1 year)
+svy: regress w c lcpi if [hsize==2 & RU==1]
+gen w2= _b[_cons]+_b[c] *c +_b[lcpi]*lcpi
+twoway (qfit w2 year)
+svy: regress w c lcpi if [hsize==3 & RU==1]
+gen w3= _b[_cons] +_b[c] *c +_b[lcpi]*lcpi
+twoway (qfit w3 year)
+svy: regress w c lcpi if [hsize==4 & RU==1]
+gen w4= _b[_cons] +_b[c] *c +_b[lcpi]*lcpi
+twoway (qfit w4 year)
+svy: regress w c lcpi if [hsize==5 & RU==1]
+gen w5= _b[_cons] +_b[c] *c +_b[lcpi]*lcpi
+twoway (qfit w5 year)
+svy: regress w c lcpi if [hsize==6 & RU==1]
+gen w6= _b[_cons] +_b[c] *c +_b[lcpi]*lcpi
+twoway (qfit w6 year)
+twoway (qfit w1 year) (qfit w2 year) (qfit w3 year) (qfit w4 year) (qfit w5 year) (qfit w6 year)
+***********
+svy: regress w c if [hsize==1 & RU==0]
+gen w1ru= _b[_cons] +_b[c] *c
+twoway (qfit w1ru year)
+svy: regress w c if [hsize==2 & RU==0]
+gen w2ru= _b[_cons] +_b[c] *c
+twoway (qfit w2ru year)
+svy: regress w c if [hsize==3 & RU==0]
+gen w3ru= _b[_cons] +_b[c] *c
+twoway (qfit w3ru year)
+svy: regress w c if [hsize==4 & RU==0]
+gen w4ru= _b[_cons] +_b[c] *c
+twoway (qfit w4ru year)
+svy: regress w c if [hsize==5 & RU==0]
+gen w5ru= _b[_cons] +_b[c] *c
+twoway (qfit w5ru year)
+svy: regress w c if [hsize==6 & RU==0]
+gen w6ru= _b[_cons] +_b[c] *c
+twoway (qfit w6ru year)
+twoway (qfit w1ru year) (qfit w2ru year) (qfit w3ru year) (qfit w4ru year) (qfit w5ru year) (qfit w6ru year)
+***********
+svy: regress w c hsize if year=="2010"
+svy: regress w c hsize RU hhsex literacy lcpi
+*******************************
+*******************************
+destring year, replace
+svy: regress w c lcpi if [county=="01" & RU==0]
+gen w1= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [county=="02" & RU==0]
+gen w2= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [county=="03" & RU==0]
+gen w3= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+*svy: regress w c lcpi if [county=="04" & RU==0]
+*gen w4= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+*svy: regress w c lcpi if [county=="05" & RU==0]
+*gen w5= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [county=="06" & RU==0]
+gen w6= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+twoway (qfit w1 year) (qfit w2 year) (qfit w3 year)(qfit w6 year)
+***********
+destring year, replace
+svy: regress w c if [county=="01" & RU==0]
+gen w1ru= _b[_cons] +_b[c]*c
+svy: regress w c if [county=="02" & RU==0]
+gen w2ru= _b[_cons] +_b[c]*c
+svy: regress w c if [county=="03" & RU==0]
+gen w3ru= _b[_cons] +_b[c]*c
+svy: regress w c if [county=="04" & RU==0]
+gen w4ru= _b[_cons] +_b[c]*c
+svy: regress w c if [county=="05" & RU==0]
+gen w5ru= _b[_cons] +_b[c]*c
+svy: regress w c if [county=="06" & RU==0]
+gen w6ru= _b[_cons] +_b[c]*c
+twoway (qfit w1ru year) (qfit w2ru year) (qfit w3ru year) (qfit w4ru year) (qfit w5ru year) (qfit w6ru year)
+****************************
+****************************
+svyset [pweight=weight]
+destring year, replace
+*svy: regress w c if [province=="09" & RU==0]
+*gen w12ru= _b[_cons] +_b[c]*c
+svy: regress w c lcpi if [province=="28" & RU==0]
+*gen w23ru= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [province=="28" & county=="01" & RU==0]
+gen w1ru= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [province=="28" & county=="02" & RU==0]
+gen w2ru= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [province=="28" & county=="03" & RU==0]
+gen w3ru= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+*svy: regress w c lcpi if [province=="28" & county=="04" & RU==0]
+*gen w4ru= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+*svy: regress w c lcpi if [province=="28" & county=="05" & RU==0]
+*gen w5ru= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [province=="28" & county=="06" & RU==0]
+gen w6ru= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [province=="28" & RU==0]
+gen w7ru= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+*svy: regress w c lcpi if [province=="23" & RU==1]
+*gen w8ru= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [ RU==0]
+gen w9ru= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+twoway(qfit w1ru year) (qfit w2ru year) (qfit w3ru year) (qfit w6ru year) (qfit w7ru year) (qfit w9ru year)
+*************
+destring year, replace
+svy: regress w c lcpi if [province=="09" & RU==0]
+gen w1= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [province=="28" & RU==0]
+gen w2= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [province=="28" & county=="02" & RU==0]
+gen w3= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+svy: regress w c lcpi if [ RU==0]
+gen w4= _b[_cons] +_b[c]*c +_b[lcpi]*lcpi
+twoway(qfit w1 year) (qfit w2 year) (qfit w3 year) (qfit w4 year)
+*************
